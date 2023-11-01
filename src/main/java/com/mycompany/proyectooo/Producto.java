@@ -2,7 +2,13 @@
 
 package com.mycompany.proyectooo;
 
-import java.io.BufferedReader;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.CSVParser;
+import com.opencsv.CSVParserBuilder;
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -81,52 +87,49 @@ public class Producto {
 
         return new Producto(this.nombreProducto,this.id,this.tipoProducto,this.precioProducto,stockProducto);
     } 
-
+    
     /**
      * @param Lista
      */
-    public void leerDatos(ArrayList<Producto> Lista){
-        Lista.forEach(item->{
-            System.out.println(item.nombreProducto);
-            System.out.println("Codigo = "+item.id);
-            switch(item.tipoProducto){
-                case 1:
-                   System.out.println("Tipo : Reposteria"); 
-                case 2:
-                    System.out.println("Tipo : Aseo"); 
-            }
-            System.out.println("$"+item.precioProducto);
-            System.out.println("Hay disponible "+item.stockProducto);
-            System.out.println("");
-
-        });
-
-    }
+    
     public void leerDatosDesdeArchivo() {
-        try {
-            FileReader fileReader = new FileReader(archivo);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String linea;
+        //Cambiar Ruta a su PC en caso de ser necesario.
+        String archivoCSV = "C:\\Users\\franc\\Documents\\ProyectoEP2-ProyectoCompleto\\src\\main\\java\\com\\mycompany\\proyectooo\\Datos\\producto.csv";  // Ruta al archivo CSV
 
-            while ((linea = bufferedReader.readLine()) != null) {
-                String[] datos = linea.split(";"); 
-                if (datos.length == 5) {
-                    String nombre = datos[0];
-                    int id = Integer.parseInt(datos[1]);
-                    int tipo = Integer.parseInt(datos[2]);
-                    int precio = Integer.parseInt(datos[3]);
-                    int stock = Integer.parseInt(datos[4]);
+        try {
+            File file = new File(archivoCSV);
+            FileReader fileReader = new FileReader(file);
+
+            CSVParser csvParser = new CSVParserBuilder()
+                .withSeparator(',')
+                .build();
+
+            CSVReader csvReader = new CSVReaderBuilder(fileReader)
+                .withCSVParser(csvParser)
+                .build();
+
+            String[] nextRecord;
+
+            while ((nextRecord = csvReader.readNext()) != null) {
+                if (nextRecord.length == 5) {
+                    String nombre = nextRecord[0];
+                    int id = Integer.parseInt(nextRecord[1]);
+                    int tipo = Integer.parseInt(nextRecord[2]);
+                    int precio = Integer.parseInt(nextRecord[3]);
+                    int stock = Integer.parseInt(nextRecord[4]);
 
                     Producto producto = new Producto(nombre, id, tipo, precio, stock);
                     ListaProductos.add(producto);
                 }
             }
 
-            bufferedReader.close();
-            fileReader.close();
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo de productos: " + e.getMessage());
+            csvReader.close();
+        } catch (IOException | CsvValidationException e) {
+            System.out.println("Error al leer el archivo CSV de productos: " + e.getMessage());
         }
     }
     
+    public ArrayList<Producto> obtenerListaProductos() {
+        return ListaProductos;
+    }
 }
