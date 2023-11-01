@@ -92,6 +92,16 @@ public class Usuario {
         
         return true;
     }
+
+    //modificaciones entrega 2
+    @Override
+    public String toString() {
+    return "Nombre: " + nombreProducto + "\n" +
+           "Código: " + id + "\n" +
+           "Tipo: " + (tipoProducto == 1 ? "Reposteria" : "Aseo") + "\n" +
+           "Precio: $" + precioProducto + "\n" +
+           "Stock disponible: " + stockProducto + "\n";
+}
     
 }
 
