@@ -58,5 +58,13 @@ public class Servicio {
         this.duracionServicio = entrada.nextInt();
         ListaServicio.add(new Servicio(this.nombreServicio,this.tipoServicio,this.precioServicio,this.duracionServicio));
     }
+    //modificaciones entrega 2
+    @Override
+    public String toString() {
+    String tipo = (tipoServicio == 1) ? "Limpieza" : "Reparación";
+    return "Nombre del Servicio: " + nombreServicio + "\n" +
+           "Tipo de Servicio: " + tipo + "\n" +
+           "Precio del Servicio: $" + precioServicio + "\n" +
+           "Duración del Servicio: " + duracionServicio + " horas\n";
 }
 
