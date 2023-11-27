@@ -1,4 +1,4 @@
-package Forms;
+package com.mycompany.proyectooo;
 
 import javax.swing.JOptionPane;
 
