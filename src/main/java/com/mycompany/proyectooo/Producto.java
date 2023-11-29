@@ -1,5 +1,3 @@
-
-
 package com.mycompany.proyectooo;
 
 import com.opencsv.CSVReader;
@@ -94,7 +92,7 @@ public class Producto {
     
     public void leerDatosDesdeArchivo() {
         //Cambiar Ruta a su PC en caso de ser necesario.
-        String archivoCSV = "C:\\Users\\franc\\Documents\\ProyectoEP2-ProyectoCompleto\\src\\main\\java\\com\\mycompany\\proyectooo\\Datos\\producto.csv";  // Ruta al archivo CSV
+        String archivoCSV = "C:\\Users\\vicen\\OneDrive\\Documentos\\NetBeansProjects\\proyectoo\\src\\main\\java\\com\\mycompany\\proyectooo\\Datos";  // Ruta al archivo CSV
 
         try {
             File file = new File(archivoCSV);
@@ -131,5 +129,9 @@ public class Producto {
     
     public ArrayList<Producto> obtenerListaProductos() {
         return ListaProductos;
+    }
+
+    void leerDatos(ArrayList<Producto> ListaProductos) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
