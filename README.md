@@ -1,2 +1,2 @@
-# ProyectoEP2
-Codigo base de la entrega EP1
+# ProyectoEpf
+Codigo base de la entrega EP2
