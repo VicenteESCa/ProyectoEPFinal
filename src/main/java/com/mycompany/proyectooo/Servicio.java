@@ -1,5 +1,6 @@
 package com.mycompany.proyectooo;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ public class Servicio {
     private int tipoServicio;
     private int precioServicio;
     private int duracionServicio;
-    private ArrayList<Servicio> ListaServicio = new ArrayList<Servicio>();
+    private static ArrayList<Servicio> ListaServicio = new ArrayList<Servicio>();
     Scanner entrada = new Scanner(System.in);
     
     public Servicio(){
@@ -47,7 +48,7 @@ public class Servicio {
         return(duracionServicio);
     }
     
-    public void crearDato(){
+    public boolean crearDato() throws ParseException{
         System.out.println("Ingrese Nombre del Servicio");
         this.nombreServicio = entrada.next();
         System.out.println("Ingrese Tipo de Servicio (Codigo)");
@@ -56,9 +57,12 @@ public class Servicio {
         this.precioServicio = entrada.nextInt();
         System.out.println("Ingrese Duracion del Servicio(Horas)");
         this.duracionServicio = entrada.nextInt();
+        
         ListaServicio.add(new Servicio(this.nombreServicio,this.tipoServicio,this.precioServicio,this.duracionServicio));
+        return true;
     }
     //modificaciones entrega 2
+  
     @Override
     public String toString() {
     String tipo = (tipoServicio == 1) ? "Limpieza" : "Reparación";
@@ -66,5 +70,5 @@ public class Servicio {
            "Tipo de Servicio: " + tipo + "\n" +
            "Precio del Servicio: $" + precioServicio + "\n" +
            "Duración del Servicio: " + duracionServicio + " horas\n";
+    }
 }
-
