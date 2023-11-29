@@ -3,8 +3,7 @@ package com.mycompany.proyectooo;
 
 import java.text.ParseException;
 import java.util.Scanner;
-
-
+import Interfaz.InicioSesion;
 public class Principal {
     
 
@@ -57,7 +56,11 @@ public class Principal {
                         switch(boton){
                             case 1:
                                 servicio.crearDato();
-                        }   
+                        }
+                    case 5:
+                    InicioSesion inicioSesion = new InicioSesion();
+                    inicioSesion.setVisible(true);
+                    
                 }
 
             }
