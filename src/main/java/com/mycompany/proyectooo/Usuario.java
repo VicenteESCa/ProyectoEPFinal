@@ -13,7 +13,8 @@ public class Usuario {
     private String comuna;
     private String region;
     private String direccion;
-    private ArrayList<Usuario>listaUsuario = new ArrayList<Usuario>();
+    private String contraseña;
+    private static ArrayList<Usuario>listaUsuario = new ArrayList<Usuario>();
     public Scanner entrada = new Scanner(System.in);
     
     public Usuario(){
@@ -22,18 +23,23 @@ public class Usuario {
         this.comuna = "";
         this.region = "";
         this.direccion = "";
+         this.contraseña = "";
     }
     
-    public Usuario(String nombre, String rut, String comuna,String region, String direccion){
+    public Usuario(String nombre, String rut, String comuna,String region, String direccion,String contraseña){
         this.nombre = nombre;
         this.rut = rut;
         this.comuna = comuna;
         this.region = region;
         this.direccion = direccion;
-        
+        this.contraseña = contraseña;
         
     }
 
+    
+    public String getContraseña() {
+        return contraseña;
+    }
     public String getNombre(){
         return this.nombre;
     }
@@ -50,6 +56,10 @@ public class Usuario {
         return this.direccion;
     }
 
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
@@ -72,10 +82,10 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-
-
-
-
+    public static ArrayList<Usuario> obtenerListaUsuarios() {
+        return listaUsuario;
+    }
+    
     public boolean crearDato() throws ParseException{
         System.out.println("Ingrese Nombre de Usuario");
         this.nombre = entrada.next();
@@ -87,13 +97,16 @@ public class Usuario {
         this.region = entrada.next();
         System.out.println("Ingrese Direccion");
         this.direccion = entrada.next();
+        System.out.println("Ingrese Contraseña");
+        this.contraseña=entrada.next();
         
-        listaUsuario.add(new Usuario(this.nombre,this.rut,this.comuna,this.region,this.direccion));
+        listaUsuario.add(new Usuario(this.nombre,this.rut,this.comuna,this.region,this.direccion,this.contraseña));
         
         return true;
     }
 
     //modificaciones entrega 2
+    /*
     @Override
     public String toString() {
     return "Nombre: " + nombreProducto + "\n" +
@@ -101,7 +114,7 @@ public class Usuario {
            "Tipo: " + (tipoProducto == 1 ? "Reposteria" : "Aseo") + "\n" +
            "Precio: $" + precioProducto + "\n" +
            "Stock disponible: " + stockProducto + "\n";
-}
-    
+    }
+*/
 }
 
