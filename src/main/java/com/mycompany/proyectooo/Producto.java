@@ -1,137 +1,42 @@
+
 package com.mycompany.proyectooo;
 
-import com.opencsv.CSVReader;
-import com.opencsv.CSVReaderBuilder;
-import com.opencsv.CSVParser;
-import com.opencsv.CSVParserBuilder;
-import com.opencsv.exceptions.CsvValidationException;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Producto {
-    private String nombreProducto;
-    private int id;
-    private int tipoProducto;
-    private int precioProducto;
-    private int stockProducto;
-    private Scanner lectura = new Scanner(System.in);
-    public String archivo = "src/Datos/productos.txt";
-    public static ArrayList<Producto> ListaProductos=new ArrayList<Producto>();
+/**
+ *
+ * @author Andrea
+ */
+public class Producto extends Oferta {
+    private String tipoProducto;
+    private int stock;
 
-    public Producto(){
-        this.nombreProducto = "";
-        this.id = 0;
-        this.tipoProducto = 0;
-        this.precioProducto = 0;
-        this.stockProducto = 0;
-    }
-    
-    public Producto(String nombre, int id,int tipo, int precio, int stock){
-        this.nombreProducto = nombre;
-        this.id = id;
-        this.tipoProducto = tipo;
-        this.precioProducto = precio;
-        this.stockProducto = stock;
-    }
-    
-    public void setNombre(String nombre){
-        this.nombreProducto = nombre;
-    }
-    public String getNombre(){
-        return(nombreProducto);
-    }
-    public void setId(int id){
-        this.id = id;
-    }
-    public int getId(){
-        return(id);
-    }
-    public void setTipo(int tipo){
-        this.tipoProducto = tipo;
-    }
-    public int getTipo(){
-        return(tipoProducto);
-    }
-    public void setPrecio(int precio){
-        this.precioProducto = precio;
-    }
-    public int getPrecio(){
-        return(precioProducto);
-    }
-    public void setStock(int stock){
-        this.stockProducto = stock;
-    }
-    public int getStock(){
-        return(stockProducto);
-    }
-    
-    public Producto crearDatos() throws ParseException{
-        System.out.println("Ingrese el Nombre del Producto"); 
-        this.nombreProducto=lectura.next();
-        //lectura.next();
-        System.out.println("Ingrese su Identificador"); 
-        this.id=lectura.nextInt();
-        System.out.println("Ingrese el Tipo de Producto"); 
-        this.tipoProducto=lectura.nextInt();
-        System.out.println("Ingrese el precio del Producto"); 
-        this.precioProducto=lectura.nextInt();
-        System.out.println("Ingrese el precio el stock del Producto"); 
-        this.stockProducto=lectura.nextInt();
-
-        return new Producto(this.nombreProducto,this.id,this.tipoProducto,this.precioProducto,stockProducto);
-    } 
-    
-    /**
-     * @param Lista
-     */
-    
-    public void leerDatosDesdeArchivo() {
-        //Cambiar Ruta a su PC en caso de ser necesario.
-        String archivoCSV = "C:\\Users\\vicen\\OneDrive\\Documentos\\NetBeansProjects\\proyectoo\\src\\main\\java\\com\\mycompany\\proyectooo\\Datos";  // Ruta al archivo CSV
-
-        try {
-            File file = new File(archivoCSV);
-            FileReader fileReader = new FileReader(file);
-
-            CSVParser csvParser = new CSVParserBuilder()
-                .withSeparator(',')
-                .build();
-
-            CSVReader csvReader = new CSVReaderBuilder(fileReader)
-                .withCSVParser(csvParser)
-                .build();
-
-            String[] nextRecord;
-
-            while ((nextRecord = csvReader.readNext()) != null) {
-                if (nextRecord.length == 5) {
-                    String nombre = nextRecord[0];
-                    int id = Integer.parseInt(nextRecord[1]);
-                    int tipo = Integer.parseInt(nextRecord[2]);
-                    int precio = Integer.parseInt(nextRecord[3]);
-                    int stock = Integer.parseInt(nextRecord[4]);
-
-                    Producto producto = new Producto(nombre, id, tipo, precio, stock);
-                    ListaProductos.add(producto);
-                }
-            }
-
-            csvReader.close();
-        } catch (IOException | CsvValidationException e) {
-            System.out.println("Error al leer el archivo CSV de productos: " + e.getMessage());
-        }
-    }
-    
-    public ArrayList<Producto> obtenerListaProductos() {
-        return ListaProductos;
+    public Producto() {
+        super();
+        tipoProducto = "";
+        stock = 0;
     }
 
-    void leerDatos(ArrayList<Producto> ListaProductos) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Producto(String nombre, String tipoProducto, int precio, int stock) {
+        super(nombre, precio);
+        this.tipoProducto = tipoProducto;
+        this.stock = stock;
+    }
+
+    public String getTipoProducto() {
+        return tipoProducto;
+    }
+
+    public void setTipoProducto(String tipoProducto) {
+        this.tipoProducto = tipoProducto;
+    }
+
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
