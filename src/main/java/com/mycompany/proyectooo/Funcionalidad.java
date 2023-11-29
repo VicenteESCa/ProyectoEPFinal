@@ -22,6 +22,7 @@ public class Funcionalidad {
         System.out.println("2.- Acceder a Producto ");
         System.out.println("3.- Acceder a Negocio");
         System.out.println("4.- Acceder a Servicio");
+        System.out.println("5- Inicio de Sesion");
         System.out.println("");
         System.out.println("Ingresa 0 si quieres Finalizar");
     }
