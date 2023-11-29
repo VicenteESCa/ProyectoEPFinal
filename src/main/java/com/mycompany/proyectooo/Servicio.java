@@ -1,74 +1,40 @@
 package com.mycompany.proyectooo;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Servicio {
-    private String nombreServicio;
-    private int tipoServicio;
-    private int precioServicio;
-    private int duracionServicio;
-    private static ArrayList<Servicio> ListaServicio = new ArrayList<Servicio>();
-    Scanner entrada = new Scanner(System.in);
-    
-    public Servicio(){
-        this.nombreServicio = "";
-        this.tipoServicio = 0;
-        this.precioServicio = 0;
-        this.duracionServicio = 0;
+/**
+ *
+ * @author Andrea
+ */
+public class Servicio extends Oferta {
+    private String tipoServicio;
+    private int duracion;
 
+    public Servicio() {
+        super();
+        tipoServicio = "";
+        duracion = 0;
     }
-    public Servicio(String nombreServicio, int tipoServicio, int precioServicio, int duracionServicio){
-        this.nombreServicio = nombreServicio;
+
+    public Servicio(String nombre, int precio, String tipoServicio, int duracion) {
+        super(nombre, precio);
         this.tipoServicio = tipoServicio;
-        this.precioServicio = precioServicio;
-        this.duracionServicio = duracionServicio;
+        this.duracion = duracion;
     }
-    
-    public void setNombre(String nombre){
-        this.nombreServicio = nombre;
+
+    public String getTipoServicio() {
+        return tipoServicio;
     }
-    public String getNombre(){
-        return(nombreServicio);
+
+    public void setTipoServicio(String tipoServicio) {
+        this.tipoServicio = tipoServicio;
     }
-    public int getTipo(){
-        return(tipoServicio);
+
+
+    public int getDuracion() {
+        return duracion;
     }
-    public void setPrecio(int precio){
-        this.precioServicio = precio;
-    }
-    public int getPrecio(){
-        return(precioServicio);
-    }
-    public void setDuracion(int duracion){
-        this.duracionServicio = duracion;
-    }
-    public int getDuracion(){
-        return(duracionServicio);
-    }
-    
-    public boolean crearDato() throws ParseException{
-        System.out.println("Ingrese Nombre del Servicio");
-        this.nombreServicio = entrada.next();
-        System.out.println("Ingrese Tipo de Servicio (Codigo)");
-        this.tipoServicio = entrada.nextInt();
-        System.out.println("Ingrese Precio del Servicio");
-        this.precioServicio = entrada.nextInt();
-        System.out.println("Ingrese Duracion del Servicio(Horas)");
-        this.duracionServicio = entrada.nextInt();
-        
-        ListaServicio.add(new Servicio(this.nombreServicio,this.tipoServicio,this.precioServicio,this.duracionServicio));
-        return true;
-    }
-    //modificaciones entrega 2
-  
-    @Override
-    public String toString() {
-    String tipo = (tipoServicio == 1) ? "Limpieza" : "Reparación";
-    return "Nombre del Servicio: " + nombreServicio + "\n" +
-           "Tipo de Servicio: " + tipo + "\n" +
-           "Precio del Servicio: $" + precioServicio + "\n" +
-           "Duración del Servicio: " + duracionServicio + " horas\n";
+
+    public void setDuracion(int duracion) {
+        this.duracion = duracion;
     }
 }
