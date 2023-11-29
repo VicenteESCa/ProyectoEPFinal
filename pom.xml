@@ -16,3 +16,8 @@
         <exec.mainClass>com.mycompany.proyectooo.Principal</exec.mainClass>
     </properties>
 </project>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.23</version> 
+</dependency>
