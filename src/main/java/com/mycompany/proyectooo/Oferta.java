@@ -4,7 +4,7 @@ package com.mycompany.proyectooo;
  *
  * @author Andrea
  */
-public class Oferta {
+interface Oferta {
     private String nombre;
     private int precio;
 
