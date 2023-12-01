@@ -1,2 +1,4 @@
-# ProyectoEP2
-Codigo base de la entrega EP1
+# Proyecto EPF
+Descargar mysql para su ejecucion correcta
+Ejectutar en netbeans
+
