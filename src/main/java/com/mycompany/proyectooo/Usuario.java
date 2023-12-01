@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public abstract Usuario {
+public abstract class Usuario {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Proveedor> proveedores = new ArrayList<>();
     private static List<Consumidor> consumidores = new ArrayList<>();
