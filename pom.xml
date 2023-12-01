@@ -11,13 +11,13 @@
             <artifactId>opencsv</artifactId>
             <version>5.5</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.23</version> 
+        </dependency>
     </dependencies>
-    <properties>
-        <exec.mainClass>com.mycompany.proyectooo.Principal</exec.mainClass>
-    </properties>
+    <build>
+        <finalName>${project.artifactId}-${project.version}</finalName>
+    </build>
 </project>
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>8.0.23</version> 
-</dependency>
