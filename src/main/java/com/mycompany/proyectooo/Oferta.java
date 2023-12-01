@@ -4,34 +4,10 @@ package com.mycompany.proyectooo;
  *
  * @author Andrea
  */
-interface Oferta {
-    private String nombre;
-    private int precio;
+public interface Oferta {
+    String getNombre();
+    void setNombre(String nombre);
 
-    public Oferta() {
-        nombre = "";
-        precio = 0;
-    }
-
-    public Oferta(String nombre, int precio) {
-        this.nombre = nombre;
-        this.precio = precio;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
+    int getPrecio();
+    void setPrecio(int precio);
 }
