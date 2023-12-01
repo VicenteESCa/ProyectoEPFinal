@@ -5,22 +5,49 @@ package com.mycompany.proyectooo;
  *
  * @author Andrea
  */
-public class Servicio extends Oferta {
+public class Servicio implements Oferta {
+    private String nombre;
+    private int precio;
     private String tipoServicio;
     private int duracion;
 
+    // Constructor sin argumentos
     public Servicio() {
-        super();
-        tipoServicio = "";
-        duracion = 0;
+        this.nombre = "";
+        this.precio = 0;
+        this.tipoServicio = "";
+        this.duracion = 0;
     }
 
+    // Constructor con argumentos
     public Servicio(String nombre, int precio, String tipoServicio, int duracion) {
-        super(nombre, precio);
+        this.nombre = nombre;
+        this.precio = precio;
         this.tipoServicio = tipoServicio;
         this.duracion = duracion;
     }
 
+    // Métodos implementados de la interfaz Oferta
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public int getPrecio() {
+        return precio;
+    }
+
+    @Override
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+    
     public String getTipoServicio() {
         return tipoServicio;
     }
